@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { v4: uuid } = require('uuid');
 
-class Todo {
+class Book {
     constructor(title = "", desc = "", id = uuid()) {
         this.title = title;
         this.desc = desc;
@@ -11,22 +11,22 @@ class Todo {
 }
 const stor = {
     todo: [
-        new Todo('Михаил Булгаков - Мастер и Маргарита','Это вечная книга, прославившая Булгакова, которого не имеет определённого жанра.'),
-        new Todo('Антуан де Сент-Экзюпери - Маленький принц','«Маленький принц» актуален для любого возраста.'),
-        new Todo('Лев Толстой - Война и мир','Это вечная книга, прославившая Булгакова, которого не имеет определённого жанра.'),
+        new Book('Михаил Булгаков - Мастер и Маргарита','Это вечная книга, прославившая Булгакова, которого не имеет определённого жанра.'),
+        new Book('Антуан де Сент-Экзюпери - Маленький принц','«Маленький принц» актуален для любого возраста.'),
+        new Book('Лев Толстой - Война и мир','Это вечная книга, прославившая Булгакова, которого не имеет определённого жанра.'),
     ]
 };
 
 router.get('/', (req, res) => {
     const {todo} = stor;
-    res.render("todo/index", {
+    res.render("book/index", {
         title: "Список книг",
         todos: todo,
     });
 });
 
 router.get('/create', (req, res) => {
-    res.render("todo/create", {
+    res.render("book/create", {
         title: "Добавить книгу",
         todo: {},
     });
@@ -36,7 +36,7 @@ router.post('/create', (req, res) => {
     const {todo} = stor;
     const {title, desc} = req.body;
 
-    const newTodo = new Todo(title, desc);
+    const newTodo = new Book(title, desc);
     todo.push(newTodo);
 
     res.redirect('/')
@@ -51,7 +51,7 @@ router.get('/:id', (req, res) => {
         res.redirect('/404');
     } 
         
-    res.render("todo/view", {
+    res.render("book/view", {
         title: "Информация по книге",
         todo: todo[idx],
     });
@@ -67,7 +67,7 @@ router.get('/update/:id', (req, res) => {
         res.redirect('/404');
     } 
 
-    res.render("todo/update", {
+    res.render("book/update", {
         title: "Редактирование книги",
         todo: todo[idx],
     });

@@ -1,7 +1,7 @@
 <%- include('../port/layout-start', {title: title}) %>
 
 <h1><%= title %></h1>
-<a class="btn btn-sm btn-primary" href="todo/create">Добавить книгу</a>
+<a class="btn btn-sm btn-primary" href="book/create">Добавить книгу</a>
 
     <% if(todos.length) { %>
 
@@ -20,13 +20,13 @@
                         <th scope="row"><%= idx +1 %></th>
                         <td><%= el.title %></td>
                         <td class="text-right">
-                            <a class="btn btn-sm btn-success" href="/todo/<%= el.id %>">
+                            <a class="btn btn-sm btn-success" href="/book/<%= el.id %>">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </a>
-                            <a class="btn btn-sm btn-primary" href="/todo/update/<%= el.id %>">
+                            <a class="btn btn-sm btn-primary" href="/book/update/<%= el.id %>">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
-                            <form action="/todo/delete/<%= el.id %>" method="POST" class="d-inline">
+                            <form action="/book/delete/<%= el.id %>" method="POST" class="d-inline">
                                 <button class="btn btn-sm btn-danger">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
