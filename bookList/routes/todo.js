@@ -39,7 +39,7 @@ router.post('/create', (req, res) => {
     const newTodo = new Todo(title, desc);
     todo.push(newTodo);
 
-    res.redirect('/todo')
+    res.redirect('/')
 });
 
 router.get('/:id', (req, res) => {
@@ -88,7 +88,7 @@ router.post('/update/:id', (req, res) => {
         title,
         desc,
     };
-    res.redirect(`/todo/${id}`);
+    res.redirect(`/`);
 });
 
 router.post('/delete/:id', (req, res) => {
@@ -101,7 +101,7 @@ router.post('/delete/:id', (req, res) => {
     } 
 
     todo.splice(idx, 1);
-    res.redirect(`/todo`);
+    res.redirect(`/`);
 });
 
 module.exports = router;

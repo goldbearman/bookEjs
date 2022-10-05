@@ -9,7 +9,7 @@ const app = express();
 app.use(express.urlencoded());
 app.set("view engine", "ejs");
 
-app.use('/', indexRouter);
+app.use('/', todoRouter);
 app.use('/todo', todoRouter);
 
 app.use(errorMiddleware);
