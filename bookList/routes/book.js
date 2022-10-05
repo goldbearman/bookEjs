@@ -48,7 +48,7 @@ router.get('/:id', (req, res) => {
     const idx = todo.findIndex(el => el.id === id);
 
     if (idx === -1) {
-        res.redirect('/404');
+        res.redirect('errors/404');
     } 
         
     res.render("book/view", {
@@ -64,7 +64,7 @@ router.get('/update/:id', (req, res) => {
     const idx = todo.findIndex(el => el.id === id);
 
     if (idx === -1) {
-        res.redirect('/404');
+        res.redirect('errors/404');
     } 
 
     res.render("book/update", {
@@ -80,7 +80,7 @@ router.post('/update/:id', (req, res) => {
     const idx = todo.findIndex(el => el.id === id);
 
     if (idx === -1) {
-        res.redirect('/404');
+        res.redirect('errors/404');
     } 
 
     todo[idx] = {
@@ -97,7 +97,7 @@ router.post('/delete/:id', (req, res) => {
     const idx = todo.findIndex(el => el.id === id);
 
     if (idx === -1) {
-        res.redirect('/404');
+        res.redirect('errors/404');
     } 
 
     todo.splice(idx, 1);
